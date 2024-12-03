@@ -34,3 +34,18 @@ export function renderLicenseSection(license) {
 
 This project is licensed under the [${license}](${licenseLink}) license.`;
 }
+
+
+
+export function renderTechnologies(technologies) {
+  if (!technologies || technologies.length === 0) {
+      return "";
+  }
+
+  const technologiesList = technologies.map((tech) => `- ${tech}`).join("\n");
+  return `## Technologies Used
+
+The following technologies were used in this project:
+
+${technologiesList}`;
+}

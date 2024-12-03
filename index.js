@@ -2,7 +2,7 @@
 
 import inquirer from "inquirer";
 import { writeFile } from "fs/promises";
-import { renderLicenseBadge, renderLicenseLink, renderLicenseSection } from "./utils/generateMarkdown.js";
+import { renderLicenseBadge, renderLicenseLink, renderLicenseSection, renderTechnologies } from "./utils/generateMarkdown.js";
 
 
 const questions = [
@@ -35,6 +35,11 @@ const questions = [
         type: "input",
         name: "contact",
         message: "Who can users contact for questions or issues?"
+    },
+    {
+        type: "input",
+        name: "technologies",
+        message: "List the technologies used (comma-separated):"
     }
 ];
 
@@ -50,6 +55,10 @@ async function writeToFile(fileName, data) {
 
 
 function generateReadMe(data) {
+    const technologies = data.technologies 
+        ? data.technologies.split(",").map((tech) => tech.trim()) 
+        : []; 
+
     return `
 # ${data.projectName}
 ${renderLicenseBadge(data.license)}
@@ -59,13 +68,14 @@ ${data.description}
 
 ${renderLicenseSection(data.license)}
 
+${renderTechnologies(technologies)}
+
 ## Contact Information
 - Email: ${data.email}
 - GitHub: [${data.github}](https://github.com/${data.github})
 - Contact Person: ${data.contact}
 `;
 }
-
 
 function init() {
     inquirer
