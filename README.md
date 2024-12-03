@@ -18,5 +18,5 @@ The following technologies were used in this project:
 
 ## Contact Information
 - Email: nmarshke@gmail.com
-- GitHub: [Nolan](https://github.com/Nolan)
+- GitHub: [Nolan-Marshke](https://github.com/Nolan-Marshke)
 - Contact Person: nmarshke@gmail.com
